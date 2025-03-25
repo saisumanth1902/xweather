@@ -8,7 +8,7 @@ function App() {
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(''); 
 
-  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
+  const API_KEY = '33f211a371df49d9b4a145043252503';
 
   const fetchWeatherData = async () => {
     setLoading(true); 
