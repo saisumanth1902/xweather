@@ -8,7 +8,7 @@ function App() {
   const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(''); 
 
-  const API_KEY = '33f211a371df49d9b4a145043252503'; 
+  const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
   const fetchWeatherData = async () => {
     setLoading(true); 
@@ -19,7 +19,7 @@ function App() {
       const response = await axios.get(
         `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`
       );
-      setWeatherData(response.data);
+      setWeatherData(response.data); 
     } catch (err) {
       setError('Failed to fetch weather data'); 
       alert('Failed to fetch weather data'); 
@@ -46,9 +46,9 @@ function App() {
         <button onClick={handleSearch}>Search</button>
       </div>
 
+      {error && <p className="error-message">{error}</p>}
 
       {loading && <p>Loading data...</p>}
-
 
       {weatherData && (
         <div className="weather-cards">
